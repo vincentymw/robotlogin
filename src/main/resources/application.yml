@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/RasaUser?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: ''
+
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on_save
+      namespace: com.example.robotlogin
+
+  redis:
+    host: 127.0.0.1
+    password: ''
+    port: 6379
+    timeout: 5000ms
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 1s
+        max-idle: 8
+        min-idle: 0
+
+server:
+  port: 8800
+
+chatBot:
+  url: http://47.98.250.24:5005/webhooks/rest/webhook
