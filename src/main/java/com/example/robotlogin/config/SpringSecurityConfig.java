@@ -85,6 +85,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return filter;
     }
 
+//    @Bean
+//    public CorsFilter corsFilter(){
+//        CorsFilter corsFilter = new CorsFilter();
+//        return corsFilter;
+//    }
+
     /**
      * 自定义用户信息获取来源和加密算法
      */
@@ -108,7 +114,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/auth/register")
                 .permitAll();
 
+//        http.authorizeRequests()
+//                .antMatchers("/api/auth/jwtLogin")
+//                .permitAll();
+
         http.csrf().disable();
+
+        //允许跨域请求
+        http.authorizeRequests()
+                .and()
+                .csrf()
+                .disable();
 
         //登录认证功能
         http.authorizeRequests()
